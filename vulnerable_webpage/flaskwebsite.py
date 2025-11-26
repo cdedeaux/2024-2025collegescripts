@@ -27,6 +27,10 @@ def failure():
     
     return redirect(url_for('home'))
 
+@app.route('/crazyunfindablebackdoor')
+def backdoor():
+    return "Backdoor accessed! flag{you_found_the_backdoor_flag}"
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
 
