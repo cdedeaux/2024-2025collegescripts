@@ -1,0 +1,20 @@
+
+/etc/hosts 
+-changed host name here for website (FIX LATER)
+
+C:\Windows\System32\drivers\etc\hosts
+-added host name here for website(FIX LATER)
+have to search for all files in windows
+
+Remove-NetFirewallRule -DisplayName "Flask Dev"
+
+for testing on phones
+
+
+Remove-NetFirewallRule -DisplayName "Flask Dev"
+
+netsh interface portproxy add v4tov4 listenport=5000 listenaddress=0.0.0.0 connectport=5000 connectaddress=
+
+port forwarding
+
+netsh interface portproxy delete v4tov4 listenport=5000 listenaddress=0.0.0.0

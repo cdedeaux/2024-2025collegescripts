@@ -22,17 +22,22 @@ app = Flask(__name__)
 def home():
     user_ip = request.remote_addr
     db = Database()
-    connection = sqlite3.connect(db.db_name)
+    
+
+    connection = sqlite3.connect(db.db_name, timeout=10)
     cur = connection.cursor()
+    
     try:
         query = "INSERT INTO ip (ip_address) VALUES (?)"
         cur.execute(query, (user_ip,))
         connection.commit()
-        connection.close()
     except sqlite3.IntegrityError:
         pass
+    finally:  
+        connection.close()
     
     return render_template('frontend.html', ip_address=user_ip)
-
-if __name__ == '__main__':
+if __name__ == "__main__":
+    website_url = 'not-a-suspicous-link:5000'
+    app.config['SERVER_NAME'] = website_url
     app.run(debug=True, host='0.0.0.0')
