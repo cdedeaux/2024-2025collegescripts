@@ -20,6 +20,9 @@ class Database:
 app = Flask(__name__)
 @app.route('/')
 def home():
+    return render_template('homepage.html')
+@app.route('/showip')
+def return_ip():
     user_ip = request.remote_addr
     db = Database()
     
@@ -38,6 +41,6 @@ def home():
     
     return render_template('frontend.html', ip_address=user_ip)
 if __name__ == "__main__":
-    website_url = 'not-a-suspicous-link:5000'
+    website_url = 'not-a-suspicous-link:8080'
     app.config['SERVER_NAME'] = website_url
     app.run(debug=True, host='0.0.0.0')
